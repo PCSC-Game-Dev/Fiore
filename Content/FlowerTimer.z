@@ -5,7 +5,7 @@ class FlowerTimer : ZilchComponent
     
     var Timer : Real = 5;
     var TimePassed : Real = 0;
-    
+    //test
     function Initialize(init : CogInitializer)
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
