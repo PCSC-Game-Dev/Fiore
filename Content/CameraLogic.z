@@ -1,0 +1,27 @@
+class CameraLogic : ZilchComponent
+{
+    var TargetObject : Cog = null;
+    var StopCamera : Boolean = false;
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.TargetObject = this.Space.FindObjectByName("Sunny");
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var newCameraPos = this.TargetObject.Transform.LocalTranslation;   
+        
+        newCameraPos.Z = this.Owner.Transform.LocalTranslation.Z;
+        if(this.StopCamera == false)
+        {
+            this.Owner.Transform.LocalTranslation = newCameraPos;
+        }
+        else
+        {
+            newCameraPos.X = this.Owner.Transform.LocalTranslation.X;
+            this.Owner.Transform.LocalTranslation = newCameraPos;
+        }
+    }
+}

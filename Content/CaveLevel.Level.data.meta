@@ -1,0 +1,11 @@
+DataContent = 
+{
+	DataBuilder = 
+	{
+		string Name = "CaveLevel",
+		uint64 ResourceId = 560645c0947e44cc,
+		string LoaderType = "Level",
+		uint Version = 0,
+		bool ShowInEditor = true,
+	},
+},

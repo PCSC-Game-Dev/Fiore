@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "FlowerSpawn",
+		uint64 ResourceId = 560fac3f26497898,
+	},
+},

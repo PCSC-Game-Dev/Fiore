@@ -1,0 +1,11 @@
+DataContent = 
+{
+	DataBuilder = 
+	{
+		string Name = "StartMenu",
+		uint64 ResourceId = 5608e581a99f5f6a,
+		string LoaderType = "Level",
+		uint Version = 0,
+		bool ShowInEditor = true,
+	},
+},

@@ -1,0 +1,64 @@
+class PlayerCollision : ZilchComponent
+{
+    var BasicLevel: Level = Level.Find("BasicLevel");
+    var BasicLevel2: Level = Level.Find("BasicLevel2");
+    var BasicLevel3: Level = Level.Find("BasicLevel3");
+    var CaveLevel: Level = Level.Find("CaveLevel");
+    var StartMenu: Level = Level.Find("StartMenu");
+    
+    function Initialize(init : CogInitializer)
+    {
+        // Connect to CollisionStarted event
+        //           when I      get a CollisionStarted event call my OnCollisionStarted function
+        Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+        Zero.Connect(this.Owner, Events.CollisionEnded, this.OnCollisionEnded);
+    }
+    
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        var otherObject = event.OtherObject;
+        if(otherObject.Name == "Ground")
+        {
+            var space = this.Space.ReloadLevel();
+        }
+        
+        if(otherObject.Name == "Flag")
+        {
+            var space = this.LoadLevel(this.BasicLevel2);
+        }
+        
+        if(otherObject.Name == "Flag2")
+        {
+            var space = this.LoadLevel(this.BasicLevel3);
+        }
+        
+        if(otherObject.Name == "Flag3")
+        {
+            var space = this.LoadLevel(this.StartMenu);
+        }
+        
+        if(otherObject.Name == "CameraStopper")
+        {
+            this.Space.FindObjectByName("Camera").CameraLogic.StopCamera = true;
+        }
+    }
+    
+    function OnCollisionEnded(event : CollisionEvent)
+    {
+        if(event.OtherObject.Name == "CameraStopper")
+        {
+            this.Space.FindObjectByName("Camera").CameraLogic.StopCamera = false;
+        }
+    }
+    
+    function LoadLevel(level : Level) : Space
+    {
+        var space = this.GameSession.CreateSpace(Archetype.Find("Space"));
+        
+        space.LoadLevel(level);
+        
+        this.Space.Destroy();
+        
+        return space;
+    } 
+}

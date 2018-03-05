@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "GlowShroom",
+		uint64 ResourceId = 560784ee1b552c39,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 65,
+		uint FrameSizeY = 70,
+		uint FrameCount = 1,
+		float FrameDelay = 0.0833333358,
+		float OriginX = 32,
+		float OriginY = 35,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

@@ -1,0 +1,70 @@
+class PlayerAnimation : ZilchComponent
+{
+    [Property]
+var StandingStillPlayer : SpriteSource = null;
+
+[Property]
+var WalkingPlayer : SpriteSource = null;
+
+[Property]
+var JumpingStill : SpriteSource = null;
+
+  function Initialize(init : CogInitializer)
+  {
+      Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+// standing state
+if(this.Owner.Sprite.SpriteSource == this.StandingStillPlayer)
+{
+    if(Zero.Keyboard.KeyIsDown(Keys.A))
+    {
+        this.Owner.Sprite.SpriteSource = this.WalkingPlayer;
+        this.Owner.Sprite.FlipX = true;
+    }
+    
+    if(Zero.Keyboard.KeyIsDown(Keys.D))
+    {
+        this.Owner.Sprite.SpriteSource = this.WalkingPlayer;
+        this.Owner.Sprite.FlipX = false;
+    }
+
+    if(Zero.Keyboard.KeyIsDown(Keys.Space))
+    {
+        this.Owner.Sprite.SpriteSource = this.JumpingStill;
+    }
+}
+// walking state
+else if(this.Owner.Sprite.SpriteSource == this.WalkingPlayer)
+{
+    if(Zero.Keyboard.KeyIsDown(Keys.A) == false && Zero.Keyboard.KeyIsDown(Keys.D) == false)
+    {
+        this.Owner.Sprite.SpriteSource = this.StandingStillPlayer;
+    }
+
+    if(Zero.Keyboard.KeyIsDown(Keys.Space))
+    {
+        this.Owner.Sprite.SpriteSource = this.JumpingStill;
+    }
+    if(Zero.Keyboard.KeyIsDown(Keys.A))
+    {
+        this.Owner.Sprite.FlipX = true;
+    }
+    
+    if(Zero.Keyboard.KeyIsDown(Keys.D))
+    {
+        this.Owner.Sprite.FlipX = false;
+    }
+}
+// jumping state
+else if(this.Owner.Sprite.SpriteSource == this.JumpingStill)
+{
+    if(this.Owner.SweptController.Grounded)
+    {
+        this.Owner.Sprite.SpriteSource = this.StandingStillPlayer;
+    }
+}
+}
+}

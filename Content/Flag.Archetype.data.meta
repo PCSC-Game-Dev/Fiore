@@ -1,0 +1,11 @@
+DataContent = 
+{
+	DataBuilder = 
+	{
+		string Name = "Flag",
+		uint64 ResourceId = 56078f2346b29df2,
+		string LoaderType = "Cog",
+		uint Version = 0,
+		bool ShowInEditor = true,
+	},
+},

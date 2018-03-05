@@ -1,0 +1,29 @@
+class StartButton : ZilchComponent
+{
+    [Property]
+    var Projectile: Archetype = Archetype.Find("MenuHelper");
+
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.LevelSettings, Events.MouseDown, this.OnMouseDown);
+        Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+    }
+
+    function OnMouseDown(event : ViewportMouseEvent)
+    {
+        if(event.Mouse.IsButtonDown(MouseButtons.Left))
+        {
+        var mousePosition = event.ToWorldZPlane(0);
+        mousePosition.Z = 1;
+        var createdProjectile = this.Space.CreateAtPosition(this.Projectile, mousePosition);
+        }
+    }
+    
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        if(event.OtherObject.Name == this.Projectile.Name)
+        {
+            this.Space.LoadLevel(Level.Find("BasicLevel"));
+        }
+    }
+}

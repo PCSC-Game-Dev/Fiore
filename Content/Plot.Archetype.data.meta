@@ -1,0 +1,11 @@
+DataContent = 
+{
+	DataBuilder = 
+	{
+		string Name = "Plot",
+		uint64 ResourceId = 5602562f0cce8aa5,
+		string LoaderType = "Cog",
+		uint Version = 0,
+		bool ShowInEditor = true,
+	},
+},

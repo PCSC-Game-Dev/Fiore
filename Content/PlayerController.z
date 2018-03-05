@@ -1,0 +1,37 @@
+class PlayerController : ZilchComponent
+{
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var movement = Real3(0.0, 0.0, 0.0);
+        
+        if(Zero.Keyboard.KeyIsDown(Keys.A))
+        {
+            movement.X -= 1.0;
+        }
+
+        if(Zero.Keyboard.KeyIsDown(Keys.D))
+        {
+            movement.X += 1.0;
+        }
+
+        if(Zero.Keyboard.KeyIsPressed(Keys.Space))
+        {
+            this.Owner.SweptController.Jump();
+        }
+        
+        if(Zero.Keyboard.KeyIsDown(Keys.Up) == false)
+        {
+            if(this.Owner.SweptController.Jumping)
+            {
+                this.Owner.SweptController.JumpCancel();
+            }
+        }
+
+        this.Owner.SweptController.Update(movement, event.Dt);
+    }
+}

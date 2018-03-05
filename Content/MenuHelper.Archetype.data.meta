@@ -1,0 +1,11 @@
+DataContent = 
+{
+	DataBuilder = 
+	{
+		string Name = "MenuHelper",
+		uint64 ResourceId = 5604e3ccf6cdde9c,
+		string LoaderType = "Cog",
+		uint Version = 0,
+		bool ShowInEditor = true,
+	},
+},

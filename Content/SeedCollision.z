@@ -1,0 +1,50 @@
+class SeedCollision : ZilchComponent
+{
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+    }
+
+    function OnCollisionStarted(event : CollisionEvent)
+    {
+        var otherObject = event.OtherObject;
+        
+        if(otherObject.Name == "Plot" && otherObject.FlowerSpawn.Spawned == false)
+        {
+            this.Space.CreateAtPosition(Archetype.Find("Flower"),this.Owner.Transform.Translation + Real3(0,4.5,0));
+            otherObject.FlowerSpawn.Spawned = true;
+        }
+        
+        if(otherObject.Name == "CavePlot" && otherObject.FlowerSpawn.Spawned == false)
+        {
+            this.Space.CreateAtPosition(Archetype.Find("Flower"),this.Owner.Transform.Translation + Real3(0,4.5,0));
+            otherObject.FlowerSpawn.Spawned = true;
+        }
+        
+        if(otherObject.Name == "Plot")
+        {
+            this.Owner.Destroy();
+        }
+        
+        if(otherObject.Name == "CavePlot")
+        {
+            this.Owner.Destroy();
+        }
+        
+        if(otherObject.Name == "Ground")
+        {
+            this.Owner.Destroy();
+        }
+        
+        if(otherObject.Name == "Platform")
+        {
+            this.Owner.Destroy();
+        }
+        
+        if(otherObject.Name == "Border")
+        {
+            this.Owner.Destroy();
+        }
+        
+    }
+}

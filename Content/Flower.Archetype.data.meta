@@ -1,0 +1,11 @@
+DataContent = 
+{
+	DataBuilder = 
+	{
+		string Name = "Flower",
+		uint64 ResourceId = 560e7725ad950aac,
+		string LoaderType = "Cog",
+		uint Version = 0,
+		bool ShowInEditor = true,
+	},
+},

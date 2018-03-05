@@ -1,0 +1,11 @@
+DataContent = 
+{
+	DataBuilder = 
+	{
+		string Name = "Sunny",
+		uint64 ResourceId = 5607863fb6afa6c1,
+		string LoaderType = "Cog",
+		uint Version = 0,
+		bool ShowInEditor = true,
+	},
+},

@@ -1,0 +1,35 @@
+class FlowerTimer : ZilchComponent
+{
+    [Property]
+    var Death : SpriteSource = null;
+    
+    var Timer : Real = 5;
+    var TimePassed : Real = 0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        Console.WriteLine(this.Owner.BoxCollider.Ghost);
+        this.TimePassed += event.Dt;
+        if(this.TimePassed > this.Timer && this.Owner.Sprite.SpriteSource != this.Death)
+        {
+            this.Owner.Sprite.SpriteSource = this.Death;
+            this.Owner.BoxCollider.Ghost = true;
+            Console.WriteLine(this.Owner.BoxCollider.Ghost);
+        }
+        
+        if(this.TimePassed > 0.75 && this.Owner.Sprite.SpriteSource != this.Death)
+        {
+            this.Owner.BoxCollider.Ghost = false;
+        }
+        
+        if(this.TimePassed > this.Timer + 0.75)
+        {
+            this.Owner.Destroy();
+        }
+    }
+}

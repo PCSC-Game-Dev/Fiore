@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "CavePlot",
+		uint64 ResourceId = 56078b8abb069bfe,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 23,
+		uint FrameSizeY = 13,
+		uint FrameCount = 1,
+		float FrameDelay = 0.0833333358,
+		float OriginX = 11,
+		float OriginY = 6,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

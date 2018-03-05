@@ -1,0 +1,27 @@
+class FlowerSpawn : ZilchComponent
+{
+    
+    var Spawned : Boolean = false;
+    
+    var Timer : Real = 5;
+    var TimePassed : Real = 0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if(this.Spawned)
+        {
+            this.TimePassed += event.Dt;
+        }
+    
+        if(this.TimePassed > this.Timer)
+        {
+            this.Spawned = false;
+            this.TimePassed = 0;
+        }
+    }
+}

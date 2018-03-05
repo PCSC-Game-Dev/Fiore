@@ -1,0 +1,20 @@
+ImageContent = 
+{
+	SpriteSourceBuilder = 
+	{
+		string Name = "Flower animation",
+		uint64 ResourceId = 560fbf933c06cfba,
+		uint64 AtlasId = 5274cf95e4a661fd,
+		uint FrameSizeX = 11,
+		uint FrameSizeY = 11,
+		uint FrameCount = 2,
+		float FrameDelay = 0.5,
+		float OriginX = 5,
+		float OriginY = 5,
+		float PixelsPerUnit = 64,
+		bool Smoothing = false,
+		bool Looping = true,
+		Vec4 Slices = [0, 0, 0, 0],
+		SpriteFill Fill = Stretch,
+	},
+},

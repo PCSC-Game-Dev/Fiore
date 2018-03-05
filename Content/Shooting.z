@@ -1,0 +1,28 @@
+class Shooting : ZilchComponent
+{
+    [Property]
+    var Projectile: Archetype = Archetype.Find("Seed");
+
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.LevelSettings, Events.MouseDown, this.OnMouseDown);
+    }
+
+    function OnMouseDown(event : ViewportMouseEvent)
+    {
+        if(event.Mouse.IsButtonDown(MouseButtons.Left))
+        {
+        var mousePosition = event.ToWorldZPlane(0);
+        var spawnPosition = this.Owner.Transform.Translation;
+        var targetDirection = mousePosition - spawnPosition;
+        var createdProjectile = this.Space.CreateAtPosition(this.Projectile, spawnPosition);
+
+        targetDirection = Math.Normalize(targetDirection);
+
+        var fireSpeed = 40.0;
+        var fireVelocity = targetDirection * fireSpeed;
+        createdProjectile.Transform.Rotation = this.Owner.Transform.Rotation;
+        createdProjectile.RigidBody.Velocity = fireVelocity;
+        }
+    }
+}
